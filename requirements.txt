@@ -1,0 +1,6 @@
+notebook
+sentence_transformers==2.7.0
+elasticsearch
+pandas
+datasets
+groq
