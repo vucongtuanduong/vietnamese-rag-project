@@ -17,26 +17,82 @@ es_client = Elasticsearch(ELASTIC_URL)
 model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
 
-# def elastic_search_text(query, course, index_name="course-questions"):
-#     search_query = {
-#         "size": 5,
-#         "query": {
-#             "bool": {
-#                 "must": {
-#                     "multi_match": {
-#                         "query": query,
-#                         "fields": ["question^3", "text", "section"],
-#                         "type": "best_fields",
-#                     }
-#                 },
-#                 "filter": {"term": {"course": course}},
-#             }
-#         },
-#     }
+def compute_rrf(rank, k=60):
+    """ Our own implementation of the relevance score """
+    return 1 / (k + rank)
 
-#     response = es_client.search(index=index_name, body=search_query)
-#     return [hit["_source"] for hit in response["hits"]["hits"]]
+def elastic_search_hybrid_rrf(field, query, vector, group, k=60, index_name="vietnamese-questions"):
+    knn_query = {
+        "field": field,
+        "query_vector": vector,
+        "k": 10,
+        "num_candidates": 10000,
+        "boost": 0.5,
+        "filter": {
+            "term": {
+                "group": group
+            }
+        }
+    }
 
+    keyword_query = {
+        "bool": {
+            "must": {
+                "multi_match": {
+                    "query": query,
+                    "fields": ["context", "question", "answer"],
+                    "type": "best_fields",
+                    "boost": 0.5,
+                }
+            },
+            "filter": {
+                "term": {
+                    "group": group
+                }
+            }
+        }
+    }
+
+    knn_results = es_client.search(
+        index=index_name, 
+        body={
+            "knn": knn_query, 
+            "size": 10
+        }
+    )['hits']['hits']
+    
+    keyword_results = es_client.search(
+        index=index_name, 
+        body={
+            "query": keyword_query, 
+            "size": 10
+        }
+    )['hits']['hits']
+    
+    rrf_scores = {}
+    # Calculate RRF using vector search results
+    for rank, hit in enumerate(knn_results):
+        doc_id = hit['_id']
+        rrf_scores[doc_id] = compute_rrf(rank + 1, k)
+
+    # Adding keyword search result scores
+    for rank, hit in enumerate(keyword_results):
+        doc_id = hit['_id']
+        if doc_id in rrf_scores:
+            rrf_scores[doc_id] += compute_rrf(rank + 1, k)
+        else:
+            rrf_scores[doc_id] = compute_rrf(rank + 1, k)
+
+    # Sort RRF scores in descending order
+    reranked_docs = sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)
+    
+    # Get top-K documents by the score
+    final_results = []
+    for doc_id, score in reranked_docs[:5]:
+        doc = es_client.get(index=index_name, id=doc_id)
+        final_results.append(doc['_source'])
+    
+    return final_results
 
 def elastic_search_knn(field, vector, group, index_name="vietnamese-questions"):
     knn = {
@@ -70,7 +126,7 @@ CONTEXT:
 
     context = "\n\n".join(
         [
-            f"group: {doc['group']}\nquestion: {doc['question']}\nanswer: {doc['answer']}\ncontext: {doc['context'][:1000]}"
+            f"group: {doc['group']}\nquestion: {doc['question']}\nanswer: {doc['answer']}\ncontext: {doc['context']}"
             for doc in search_results
         ]
     )
@@ -148,8 +204,10 @@ def calculate_groq_cost(model_choice, tokens):
 def get_answer(query, group, model_choice, search_type):
     if search_type == 'Vector':
         vector = model.encode(query)
-        search_results = elastic_search_knn('question_context_answer_vector', vector, group)
-
+        search_results = elastic_search_knn('question_vector', vector, group)
+    else:
+        vector = model.encode(query)
+        search_results = elastic_search_hybrid_rrf('question_vector', query, vector, group)
     prompt = build_prompt(query, search_results)
     answer, tokens, response_time = llm(prompt, model_choice)
     

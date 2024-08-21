@@ -39,7 +39,7 @@ def main():
     # Search type selection
     search_type = st.radio(
         "Select search type:",
-        ["Vector"]
+        ["Vector", "Hybrid"]
     )
     print_log(f"User selected search type: {search_type}")
 
