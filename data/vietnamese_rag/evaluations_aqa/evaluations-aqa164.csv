@@ -1,0 +1,3 @@
+Relevance,Explanation
+PARTLY_RELEVANT,"The generated answer is partially relevant because it mentions the correct artist's name 'Hương Tràm', but it incorrectly states that the company producing the MV is Hương Tr amphibian; whereas the original answer clearly states that the company producing the MV is 'Alien Media'. Although the artist's name is correct, the accuracy of the company name leads to a PARTLY_RELEVANT evaluation."
+RELEVANT,"The generated answer is identical to the original answer, mentioning the same information (Alien Media) as the producer of MV 'Em gái mưa' of Hương Tràm. The format and structure of the generated answer also match the original answer, indicating a high level of similarity and relevance."
