@@ -29,15 +29,16 @@ BASE_URL = "https://github.com/vucongtuanduong/vietnamese-rag-project/tree/add_f
 #     return documents
 
 def load_documents(base_url):
-    relative_url = f"data/vietnamese_rag/documents-with-ids{i}.json"
+    relative_url = f"data/vietnamese_rag/documents-with-ids.json"
     docs_url = f"{BASE_URL}/{relative_url}?raw=1"
+    print(docs_url)
     docs_response = requests.get(docs_url)
     document = docs_response.json()
     return document
 
 def fetch_documents():
     print("Fetching documents...")
-    documents = load_documents(BASE_PATH, NUM_FILES)
+    documents = load_documents(BASE_PATH)
     print(f"Fetched {len(documents)} documents")
     return documents
 
