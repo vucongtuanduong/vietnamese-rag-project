@@ -50,10 +50,16 @@ python prep.py
 
 Then open port 8501 to open Streamlit app
 
+![alt text](../images/ui.png)
+![alt text](../images/ui(2).png)
+
 You can open Grafana at port 3000 with default username and password is `admin`
+
+![alt text](../images/grafana_dashboard1.png)
+![alt text](../images/grafana_dashboard2.png)
 
 (Optional) You can run 
 ```bash
 python generate_data.py
 ``` 
-to generate synthetic data for grafana
+to generate synthetic data for grafana 
