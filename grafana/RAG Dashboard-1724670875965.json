@@ -18,27 +18,34 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -48,19 +55,11 @@
         "x": 0,
         "y": 0
       },
-      "id": 7,
+      "id": 6,
       "options": {
-        "displayLabels": [
-          "percent"
-        ],
-        "legend": {
-          "calcs": [],
-          "displayMode": "hidden",
-          "placement": "right",
-          "showLegend": false,
-          "values": []
-        },
-        "pieType": "pie",
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -68,16 +67,16 @@
           "fields": "",
           "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -104,20 +103,20 @@
         }
       ],
       "title": "Feedback Statistics Panel",
-      "type": "piechart"
+      "type": "gauge"
     },
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 8
+        "x": 12,
+        "y": 0
       },
-      "id": 6,
+      "id": 5,
       "options": {
         "dedupStrategy": "none",
         "enableLogDetails": true,
@@ -132,7 +131,7 @@
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -164,7 +163,7 @@
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
       "fieldConfig": {
         "defaults": {
@@ -224,9 +223,9 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 8
       },
-      "id": 5,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
@@ -243,7 +242,7 @@
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -275,118 +274,7 @@
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 24
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp AS time,\r\n  total_tokens\r\nFROM conversations\r\nORDER BY timestamp",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Token Usage Panel",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
       "fieldConfig": {
         "defaults": {
@@ -419,8 +307,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -435,8 +322,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 32
+        "x": 12,
+        "y": 8
       },
       "id": 3,
       "options": {
@@ -464,7 +351,7 @@
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -496,7 +383,7 @@
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
       "fieldConfig": {
         "defaults": {
@@ -509,7 +396,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 80,
+            "fillOpacity": 100,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -529,8 +416,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -540,13 +426,38 @@
           },
           "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "count"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 16
       },
       "id": 2,
       "options": {
@@ -560,7 +471,7 @@
           "placement": "right",
           "showLegend": true
         },
-        "orientation": "auto",
+        "orientation": "horizontal",
         "showValue": "never",
         "stacking": "none",
         "tooltip": {
@@ -574,7 +485,7 @@
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -600,15 +511,14 @@
           }
         }
       ],
-      "title": "Relevance Distribution Panel:",
+      "title": "Relevance Distribution Panel",
       "type": "barchart"
     },
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "edubiywfzij28e"
+        "uid": "advzfdfk0622oc"
       },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -651,8 +561,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -666,8 +575,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 48
+        "x": 12,
+        "y": 16
       },
       "id": 1,
       "options": {
@@ -686,7 +595,7 @@
         {
           "datasource": {
             "type": "grafana-postgresql-datasource",
-            "uid": "edubiywfzij28e"
+            "uid": "advzfdfk0622oc"
           },
           "editorMode": "code",
           "format": "table",
@@ -716,19 +625,20 @@
       "type": "timeseries"
     }
   ],
+  "refresh": "10s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Grafana dashboards",
-  "uid": "fdudpttlukcu8f",
-  "version": 3,
+  "title": "RAG Dashboard",
+  "uid": "bdvzg94xdeqrkf",
+  "version": 11,
   "weekStart": ""
 }

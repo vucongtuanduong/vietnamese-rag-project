@@ -1,0 +1,5 @@
+![alt text](grafana_dashboard1.png)
+![alt text](grafana_dashboard2.png)
+![alt text](ports.png)
+![alt text](ui.png)
+![alt text](ui(2).png)
