@@ -96,4 +96,4 @@ pip install -r requirements.txt
 
 ## Optional
 
-Before create this repository, I have created one repository to clean the datasets i choose from huggingface 
+Before create this repository, I have created one repository to clean the datasets i choose from huggingface because my data is too large, and i have rate limit when i call groq api so i have to split into lots of chunks and run so it took me lots of time , if you want to understand more about how i do, you can check this [repository](https://github.com/PTIT-D22KH/rag-experiment)
