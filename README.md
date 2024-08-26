@@ -88,7 +88,7 @@ This dataset has four subsets, but I only use three of them: General Text, Legal
 
 I recommend you create a github codespace to run this repository
 
-At the root directory, run this command to install dependancies:
+At the root directory, run this command to install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -96,4 +96,4 @@ pip install -r requirements.txt
 
 ## Optional
 
-Before create this repository, I have created one repository to clean the datasets i choose from huggingface because my data is too large, and i have rate limit when i call groq api so i have to split into lots of chunks and run so it took me lots of time , if you want to understand more about how i do, you can check this [repository](https://github.com/PTIT-D22KH/rag-experiment)
+Before creating this repository, I created another repository to clean the datasets I chose from Huggingface. The data was too large, and I faced rate limits when calling the API, so I had to split it into many chunks and run them separately. This took a lot of time. If you want to understand more about how I did this, you can check this [repository](https://github.com/PTIT-D22KH/rag-experiment)
