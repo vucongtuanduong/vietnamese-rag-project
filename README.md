@@ -45,8 +45,55 @@ This dataset has four subsets, but I only use three of them: General Text, Legal
 
 ## Project Structure
 
+```bash
+.
+├── README.md
+├── UI_and_online_evaluation
+├── data
+│   ├── README.md
+│   └── vietnamese_rag
+│       ├── answer_vector_pickle
+│       ├── context_vector_pickle
+│       ├── documents-with-ids.json
+│       ├── documents-with-ids1.json
+│       ├── documents-with-ids2.json
+│       ├── documents-with-ids3.json
+│       ├── documents-with-ids4.json
+│       ├── documents-with-ids5.json
+│       ├── documents.json
+│       ├── evaluations_aqa
+│       ├── evaluations_qa
+│       ├── ground_truth_data
+│       ├── llm_answer
+│       ├── llm_answer_cosine.csv
+│       ├── question_context_answer_vector_pickle
+│       └── question_vector_pickle
+├── data_ingestion_and_preparation
+│   ├── README.md
+│   ├── create_vector_embeddings.ipynb
+│   └── load_datasets_and_create_documents.ipynb
+├── evaluation
+│   ├── README.md
+│   ├── llm_answer_evaluation.ipynb
+│   ├── llm_as_a_judge_aqa_evaluation.ipynb
+│   ├── llm_as_a_judge_qa_evaluation.ipynb
+│   └── retrieval_evaluation.ipynb
+├── grafana
+├── images
+├── n.txt
+└── requirements.txt
+```
 
 ## Setup
 
+I recommend you create a github codespace to run this repository
+
+At the root directory, run this command to install dependancies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Optional
+
+Before create this repository, I have created one repository to clean the datasets i choose from huggingface 
