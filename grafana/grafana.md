@@ -1,4 +1,4 @@
-## Original queries
+## SQL queries
 
 Response Time Panel:
 
@@ -134,17 +134,17 @@ GROUP BY 1
 ORDER BY 1
 ```
 
-### 5. OpenAI Cost Panel
+### 5. Groq Cost Panel
 
 This query shows the total OpenAI cost over time, grouped by Grafana's automatically calculated interval:
 
 ```sql
 SELECT
   $__timeGroup(timestamp, $__interval) AS time,
-  SUM(openai_cost) AS total_cost
+  SUM(groq_cost) AS total_cost
 FROM conversations
 WHERE timestamp BETWEEN $__timeFrom() AND $__timeTo()
-  AND openai_cost > 0
+  AND groq_cost > 0
 GROUP BY 1
 ORDER BY 1
 ```
