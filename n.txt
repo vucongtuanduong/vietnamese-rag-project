@@ -1,0 +1,54 @@
+.
+├── README.md
+├── UI_and_online_evaluation
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── app.py
+│   ├── assistant.py
+│   ├── db.py
+│   ├── docker-compose.yaml
+│   ├── generate_data.py
+│   ├── prep.py
+│   └── requirements.txt
+├── data
+│   └── vietnamese_rag
+│       ├── answer_vector_pickle
+│       │   └── answer_vector.pkl
+│       ├── context_vector_pickle
+│       │   └── context_vector.pkl
+│       ├── documents-with-ids.json
+│       ├── documents-with-ids1.json
+│       ├── documents-with-ids2.json
+│       ├── documents-with-ids3.json
+│       ├── documents-with-ids4.json
+│       ├── documents-with-ids5.json
+│       ├── documents.json
+│       ├── evaluations_aqa
+│       ├── evaluations_qa
+│       ├── ground_truth_data
+│       │   └── ground_truth_data.csv
+│       ├── llm_answer
+│       │   └── llm_answer.csv
+│       ├── llm_answer_cosine.csv
+│       ├── question_context_answer_vector_pickle
+│       │   └── question_context_answer_vector.pkl
+│       └── question_vector_pickle
+│           └── question_vector.pkl
+├── data_ingestion_and_preparation
+│   ├── create_vector_embeddings.ipynb
+│   └── load_datasets_and_create_documents.ipynb
+├── evaluate
+│   ├── llm_answer_evaluation.ipynb
+│   ├── llm_as_a_judge_aqa_evaluation.ipynb
+│   ├── llm_as_a_judge_qa_evaluation.ipynb
+│   └── retrieval_evaluation.ipynb
+├── grafana
+│   ├── RAG Dashboard-1724670875965.json
+│   └── grafana.md
+├── images
+│   ├── README.md
+│   ├── grafana_dashboard1.png
+│   └── grafana_dashboard2.png
+└── requirements.txt
+
+16 directories, 1196 files
