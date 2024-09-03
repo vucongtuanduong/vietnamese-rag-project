@@ -63,3 +63,22 @@ You can open Grafana at port 3000 with default username and password is `admin`
 python generate_data.py
 ``` 
 to generate synthetic data for grafana 
+![alt text](../images/generate_data_results.png)
+
+
+### How to run Grafana
+After you open Grafana at port 3000 and enter default username and password as `admin` , you will be asked to update password, and you can choose to skip it.
+![alt text](../images/grafana_change_admin_password.png)
+
+Next, you add data sources by clicking to `Data Sources` section and choose PostgreSQL
+![alt text](../images/data_sources_grafana.png)
+![alt text](../images/postgresql_grafana.png)
+
+Next, you enter the information\
+`Host`: `postgres`\
+`Database` : `course_assistant`\
+`User` : `POSTGRES_USER`, `POSTGRES_PASSWORD`  in your `.env` file, 
+\
+`TLS/SSL Mode`: `disabled`
+
+then click `Save & test` and then back to Home and click `Dashboards` -> `Add visualization` -> Select data sources and then use queries to create visualizations
